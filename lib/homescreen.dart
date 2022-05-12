@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
     var data = jsonDecode(response.body.toString());
     if (response.statusCode == 200) {
+      postList.clear();
       for (Map<String, dynamic> i in data) {
         postList.add(PostModel.fromJson(i));
       }
@@ -46,7 +47,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   return ListView.builder(
                       itemCount: postList.length,
                       itemBuilder: (context, index) {
-                        return Text(index.toString());
+                        return Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Title :",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500)),
+                                  Text(postList[index].title.toString()),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text("Description :",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500)),
+                                  Text(postList[index].body.toString()),
+                                ]),
+                          ),
+                        );
                       });
                 }
               }),

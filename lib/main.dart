@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import 'homescreen.dart';
+import 'package:flutter_api/selfmodel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: HomeScreen(),
+      title: 'Api Learning',
+      home: MyModel(),
     );
   }
 }
