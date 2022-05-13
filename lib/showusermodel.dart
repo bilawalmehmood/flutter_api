@@ -39,8 +39,8 @@ class _ShowUserModelState extends State<ShowUserModel> {
           child: FutureBuilder(
               future: getUserApi(),
               builder: (context, AsyncSnapshot<List<UsersModel>> snapshot) {
-                if (!snapshot.hasData) {
-                  return CircularProgressIndicator();
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator.adaptive();
                 } else {
                   return ListView.builder(
                       itemCount: userlist.length,
@@ -79,7 +79,13 @@ class ReusableRow extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(title!), Text(value!)],
+        children: [
+          Text(
+            title!,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(value!)
+        ],
       ),
     );
   }

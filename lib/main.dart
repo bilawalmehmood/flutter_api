@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/showpokemonmodel.dart';
 import 'package:flutter_api/showusermodel.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Api Learning',
-      home: ShowUserModel(),
+      home: ShowProduct(),
     );
   }
 }
